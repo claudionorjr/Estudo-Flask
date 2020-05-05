@@ -1,30 +1,10 @@
 {% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
 {% block title %} Register {% endblock %}
-{% block navegation %}
-{% endblock %}
 
 {% block content %}
-    <form action="{{ url_for('register') }}" method="POST">
-        <div class="form-row m-3">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" name="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" name="password" class="form-control" id="inputPassword4">
-          </div>
-        </div>
-        <div class="form-row m-3">
-            <div class="form-group col-md-6">
-              <label for="inlineFormInput">Nome Completo</label>
-              <input type="text" name="name" class="form-control" id="inlineFormInput">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputcpf4">CPF</label>
-              <input type="password" name="cpf" class="form-control" id="inputcpf4">
-            </div>
-          </div>
-        <button type="submit" class="btn btn-info m-3">Cadastrar</button>
-    </form>
+
+    {{ render_form(form) }}
+
 {% endblock %}

@@ -1,4 +1,4 @@
-from data.sql_alchemy import db
+from src.sql_alchemy import db
 
 books_in_users = db.Table("books_users",
     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), nullable=False),

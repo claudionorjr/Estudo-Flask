@@ -1,11 +1,11 @@
 from flask import redirect, render_template, request, url_for, flash
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from data.sql_alchemy import db
+from src.sql_alchemy import db
 from datetime import timedelta
 from models.user import User
 from models.book import Book
-from templates.forms import LoginForm, RegisterForm, BookForm, UserBookForm
+from src.templates.forms import LoginForm, RegisterForm, BookForm, UserBookForm
 
 def init_routes(app):
     @app.route("/")
@@ -39,6 +39,10 @@ def init_routes(app):
         form = RegisterForm()
 
         if form.validate_on_submit():
+            if User.query.filter_by(email=form.email.data).first():
+                flash(message="Email já cadastrado!", category="warning")
+                return redirect(url_for("register"))
+
             user = User()
             user.name = form.name.data
             user.email = form.email.data

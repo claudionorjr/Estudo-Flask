@@ -1,6 +1,6 @@
 .ambvir
 .env
-coisas.txt
 __pycache__
 database.db
 README-exemplo.md
+.pytest_cache

@@ -1,4 +1,4 @@
-from data.sql_alchemy import db
+from src.sql_alchemy import db
 import datetime
 from flask_restful import Resource, reqparse
 from flask_login import UserMixin
